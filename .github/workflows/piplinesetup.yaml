@@ -11,6 +11,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
@@ -19,9 +20,9 @@ jobs:
       uses: actions/setup-dotnet@v3
       with: 
         dotnet-versions: '6.0.x'
-        
     - name: Install dependencies
-      run: dotnet restore --no-restore
-      
+      run: dotnet restore
+    - name: build
+      run: dotnet build --no-restore
     - name: Run tests
       run: dotnet tests --verbosity normal
